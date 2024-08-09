@@ -1,7 +1,7 @@
 package com.example.franchiseapi.unit;
 
 import com.example.franchiseapi.repository.ProductRepository;
-import com.example.franchiseapi.services.ProductService;
+import com.example.franchiseapi.services.IProductService;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -14,6 +14,6 @@ public class ProductServiceTest {
     private ProductRepository productRepository;
 
     @InjectMocks
-    private ProductService productService;
-    
+    private IProductService productService;
+
 }

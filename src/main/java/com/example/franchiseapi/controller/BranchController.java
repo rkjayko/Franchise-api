@@ -5,7 +5,7 @@ import com.example.franchiseapi.dto.BranchUpdateDTO;
 import com.example.franchiseapi.dto.ProductRequestDTO;
 import com.example.franchiseapi.dto.ProductResponseDTO;
 import com.example.franchiseapi.services.BranchService;
-import com.example.franchiseapi.services.ProductService;
+import com.example.franchiseapi.services.IProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,10 +18,10 @@ public class BranchController {
 
     private final BranchService branchService;
 
-    private final ProductService productService;
+    private final IProductService productService;
 
     @Autowired
-    public BranchController(BranchService branchService, ProductService productService) {
+    public BranchController(BranchService branchService, IProductService productService) {
         this.branchService = branchService;
         this.productService = productService;
     }
@@ -31,7 +31,7 @@ public class BranchController {
             @PathVariable Long branchId,
             @Valid @RequestBody ProductRequestDTO productRequest) {
 
-        ProductResponseDTO newProduct = branchService.addProductToBranch(branchId, productRequest);
+        ProductResponseDTO newProduct = productService.addProductToBranch(branchId, productRequest);
         return ResponseEntity.ok(newProduct);
     }
 

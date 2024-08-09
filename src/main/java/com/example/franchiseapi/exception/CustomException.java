@@ -6,45 +6,39 @@ public class CustomException extends RuntimeException {
 
     private final static String ALREADY_EXISTS = "already exists";
 
-    private final static String FRANCHISE = "franchise ";
-
-    private final static String BRAND = "brand ";
-
-    private final static String PRODUCT = "product ";
-
-    public static class FranchiseAlreadyExistsException extends RuntimeException {
-        public FranchiseAlreadyExistsException() {
-            super(FRANCHISE + ALREADY_EXISTS);
+    public static class FranchiseIdNotFoundException extends RuntimeException {
+        public FranchiseIdNotFoundException(Long franchiseId) {
+            super("Franchise with ID :" + franchiseId + " " + NOT_FOUND);
         }
     }
 
-    public static class FranchiseIdNotFoundException extends RuntimeException {
-        public FranchiseIdNotFoundException() {
-            super(FRANCHISE + NOT_FOUND);
+    public static class FranchiseAlreadyExistsException extends RuntimeException {
+        public FranchiseAlreadyExistsException(String name) {
+            super("Franchise with name :" + name + " " + ALREADY_EXISTS);
         }
     }
 
     public static class BranchAlreadyExistsException extends RuntimeException {
-        public BranchAlreadyExistsException() {
-            super(BRAND + ALREADY_EXISTS);
+        public BranchAlreadyExistsException(String name) {
+            super("Branch with name :" + name + " " + ALREADY_EXISTS);
         }
     }
 
     public static class BranchIdNotFoundException extends RuntimeException {
-        public BranchIdNotFoundException() {
-            super(BRAND + NOT_FOUND);
+        public BranchIdNotFoundException(Long branchId) {
+            super("Branch with ID :" + branchId + " " + NOT_FOUND);
         }
     }
 
     public static class ProductAlreadyExistsException extends RuntimeException {
-        public ProductAlreadyExistsException() {
-            super(PRODUCT + ALREADY_EXISTS);
+        public ProductAlreadyExistsException(String name) {
+            super("Product with name :" + name + " " + ALREADY_EXISTS);
         }
     }
 
     public static class ProductIdNotFoundException extends RuntimeException {
-        public ProductIdNotFoundException() {
-            super(PRODUCT + NOT_FOUND);
+        public ProductIdNotFoundException(Long productId) {
+            super("Product with ID :" + productId + " " + NOT_FOUND);
         }
     }
 

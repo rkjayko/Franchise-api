@@ -1,7 +1,5 @@
 package com.example.franchiseapi.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -11,10 +9,12 @@ import lombok.RequiredArgsConstructor;
 @Data
 public class ProductResponseDTO {
 
-    @NotBlank(message = "Name cannot be blank")
+    public ProductResponseDTO(String name, Integer stock) {
+        this.name = name;
+        this.stock = stock;
+    }
+
     private String name;
-
-    @NotNull(message = "Stock cannot be null")
     private Integer stock;
-
+    private Long branchId;
 }

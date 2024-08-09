@@ -6,7 +6,7 @@ import com.example.franchiseapi.dto.FranchiseUpdateDTO;
 import com.example.franchiseapi.dto.TopProductDTO;
 import com.example.franchiseapi.entity.Branch;
 import com.example.franchiseapi.entity.Product;
-import com.example.franchiseapi.services.FranchiseService;
+import com.example.franchiseapi.services.IFranchiseService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,10 +20,10 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/franchises")
 public class FranchiseController {
 
-    private final FranchiseService franchiseService;
+    private final IFranchiseService franchiseService;
 
     @Autowired
-    public FranchiseController(FranchiseService franchiseService) {
+    public FranchiseController(IFranchiseService franchiseService) {
         this.franchiseService = franchiseService;
     }
 
