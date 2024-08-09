@@ -1,17 +1,15 @@
 package com.example.franchiseapi.controller;
 
+import com.example.franchiseapi.dto.ProductStockUpdateDTO;
 import com.example.franchiseapi.entity.Product;
 import com.example.franchiseapi.services.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/products")
+@RequestMapping("/products")
 public class ProductController {
 
     private final ProductService productService;
@@ -21,9 +19,10 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @PostMapping
-    public ResponseEntity<Product> addProduct(@RequestBody Product product) {
-        Product newProduct = productService.addProduct(product);
-        return new ResponseEntity<>(newProduct, HttpStatus.CREATED);
+    @PatchMapping("/{id}/stock")
+    public ResponseEntity<Product> updateProductStock(@PathVariable Long id,
+                                                      @RequestBody @Valid ProductStockUpdateDTO productStockUpdateDTO) {
+        Product updatedProduct = productService.updateProductStock(id, productStockUpdateDTO.getStock());
+        return ResponseEntity.ok(updatedProduct);
     }
 }
